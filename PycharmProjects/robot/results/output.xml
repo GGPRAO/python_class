@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.2 on win32)" generated="2026-09-16T10:07:25.104574" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="C:\Users\USER\PycharmProjects\robot\test.robot">
+<test id="s1-t1" name="open facebook" line="20">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-16T10:07:25.649297" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com'.</msg>
+<arg>${fb}</arg>
+<arg>${browssers}[0]</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-16T10:07:25.649297" elapsed="4.955260"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-16T10:07:30.872431" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-16T10:07:30.606083" elapsed="0.266348"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-16T10:07:30.873457" elapsed="2.562835"/>
+</kw>
+<tag>gopi-123</tag>
+<tag>mahesh-123</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-09-16T10:07:25.647297" elapsed="7.789942"/>
+</test>
+<test id="s1-t2" name="Open google" line="26">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-16T10:07:33.441287" level="INFO">Opening browser 'edge' to base url 'https://www.google.com'.</msg>
+<arg>${gg}</arg>
+<arg>${browser}[edge]</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-16T10:07:33.440284" elapsed="2.695060"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-16T10:07:36.137376" elapsed="1.039968"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-16T10:07:42.222359" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-16T10:07:37.210437" elapsed="5.012941"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-16T10:07:42.329844" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-16T10:07:42.223378" elapsed="0.106466"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-16T10:07:42.330853" elapsed="3.288919"/>
+</kw>
+<tag>gopi-123</tag>
+<tag>mahesh-123</tag>
+<status status="PASS" start="2026-09-16T10:07:33.439233" elapsed="12.181572"/>
+</test>
+<status status="PASS" start="2026-09-16T10:07:25.108810" elapsed="20.512980"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">gopi-123</stat>
+<stat pass="2" fail="0" skip="0">mahesh-123</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+</tag>
+<suite>
+<stat name="Test" id="s1" pass="2" fail="0" skip="0">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,185 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║          PAYMENT & MAINTENANCE SYNC - QUICK REFERENCE          ║
+║                                                                ║
+║                  Prajay Water Front Phase 2                   ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+
+🚀 LAUNCH:
+
+  cd C:\Users\USER\PycharmProjects\python_practice\maintance
+  launch.bat
+
+  → Open http://127.0.0.1:5000/
+
+
+🔄 WHAT IS SYNC?
+
+When you change Payment → Maintenance auto-updates (for current month only)
+When you change Maintenance → Payment auto-updates (for current month only)
+This keeps Payment and Maintenance CONSISTENT for the current month.
+
+
+📋 USER ACTIONS & RESULTS:
+
+┌─────────────────────────────────────────────────────────────┐
+│ Action: Change Payment to ✅ PAID                           │
+│ Result: Maintenance (2026-02) auto-becomes ✅ PAID           │
+│ Message: "synced for 2026-02"                              │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Action: Change Payment to ❌ NOT PAID                       │
+│ Result: Maintenance (2026-02) auto-becomes ❌ NOT PAID       │
+│ Message: "Maintenance removed for 2026-02"                 │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Action: Add Maintenance for 2026-02 (current month)         │
+│ Result: Payment auto-becomes ✅ PAID                         │
+│ Message: "Payment synced to PAID"                           │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Action: Remove Maintenance for 2026-02 (current month)      │
+│ Result: Payment auto-becomes ❌ NOT PAID                    │
+│ Message: "Payment synced to NOT PAID"                       │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Action: Add Maintenance for 2026-03 (future month)          │
+│ Result: Payment stays UNCHANGED (only current month syncs)   │
+│ Message: "maintenance marked as paid for 2026-03"           │
+└─────────────────────────────────────────────────────────────┘
+
+
+📊 DASHBOARD:
+
+Current Month: 2026-02
+
+Summary Cards:
+  ✓ Total Houses: 483
+  ✓ Paid: 150 (payment_status='paid')
+  ✓ Not Paid: 333 (payment_status='not_paid')
+  ✓ Maintenance Paid (2026-02): 150 (synced with Paid)
+  ✓ Available: 300
+  ✓ Rented: 100
+  ✓ Occupied: 83
+
+
+🏠 HOUSE TABLE:
+
+Each house shows:
+  • House number (H-001, H-002, etc.)
+  • Payment Status: ✅ PAID or ❌ NOT PAID
+  • Availability: AVAILABLE, RENTED, or OCCUPIED
+  • Maintenance for current month: ✅ PAID or ❌ NOT PAID
+  • Quick dropdowns to change Payment/Availability
+  • Month picker to add maintenance
+  • Remove button (if current month is paid)
+
+
+✅ SYNC INDICATOR:
+
+Header shows: 🔄 SYNCED
+
+This badge tells users that Payment & Maintenance are synchronized.
+
+
+🧪 TEST THE SYNC:
+
+Run comprehensive tests:
+  python test_sync.py
+
+All 8 tests should PASS ✅:
+  ✅ Index shows SYNCED badge
+  ✅ Set Payment PAID → auto-adds maintenance
+  ✅ Set Payment NOT PAID → auto-removes maintenance
+  ✅ Add maintenance (current month) → auto-sets payment PAID
+  ✅ Remove maintenance (current month) → auto-sets payment NOT PAID
+  ✅ Add maintenance (future month) → payment unchanged
+  ✅ CSV includes both fields
+  ✅ Dashboard counts are consistent
+
+
+💾 CSV EXPORT:
+
+Click "📥 Export CSV" to download houses.csv
+
+Format:
+  house_number,payment_status,availability,maintenance_paid_months
+  H-001,paid,available,2026-02,2026-03
+  H-002,not_paid,rented,
+  H-003,paid,occupied,2026-02
+
+
+🔑 KEY POINTS:
+
+✓ Payment & Maintenance are SYNCED only for CURRENT MONTH (2026-02)
+✓ You can still add maintenance for any past/future month
+✓ Payment status only changes when current month maintenance changes
+✓ Past/Future months are INDEPENDENT of payment status
+✓ All sync actions show flash messages explaining what happened
+✓ Dashboard counts automatically update
+✓ CSV includes all data
+
+
+🛠️ TECHNICAL DETAILS:
+
+Backend:
+  • set_payment() syncs maintenance_paid_months
+  • set_maintenance() syncs payment_status (only for current month)
+  • add_house() syncs both on creation
+
+Frontend:
+  • Dropdowns auto-submit onchange
+  • Flash messages explain actions
+  • SYNCED badge in header
+  • Explanation text at bottom
+
+Database:
+  • payment_status: 'paid' or 'not_paid'
+  • maintenance_paid_months: comma-separated list (e.g., "2026-02,2026-03")
+
+
+📚 DOCUMENTATION:
+
+  README.md              - Quick start guide
+  FEATURES.md            - Full features list
+  QUICK_START.txt        - Visual guide
+  SYNC_FEATURE.md        - Detailed sync documentation
+  QUICK_REFERENCE.txt    - This file
+
+
+❓ FAQ:
+
+Q: Why is sync only for current month?
+A: To ensure consistency between Payment and Maintenance for the current month,
+   while allowing flexibility for past/future months.
+
+Q: Can I have maintenance for 2026-03 but payment NOT PAID?
+A: Yes! Only current month (2026-02) syncs. You can have any maintenance
+   months independent of payment status.
+
+Q: What happens when current month changes (March 2026)?
+A: The sync will work with the new current month. Old synced pairs remain
+   in the database as historical data.
+
+Q: How do I see sync in action?
+A: 1. Open http://127.0.0.1:5000/
+   2. Change a Payment dropdown
+   3. Watch the Maintenance column update automatically
+   4. See flash message explain the sync
+
+
+═══════════════════════════════════════════════════════════════════
+
+SYSTEM STATUS: ✅ FULLY OPERATIONAL
+
+Payment & Maintenance are perfectly SYNCED for 2026-02.
+All tests passing. Ready for production use.
+
+═══════════════════════════════════════════════════════════════════
+

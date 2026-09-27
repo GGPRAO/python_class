@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.2 on win32)" generated="2026-09-27T20:32:55.706924" rpa="false" schemaversion="5">
+<suite id="s1" name="Facebook Login" source="C:\Users\USER\PycharmProjects\robot\csv_data\fb\facebook_login.robot">
+<test id="s1-t1" name="Facebook Login with ${username}" line="19">
+<kw name="Facebook Login Test">
+<kw name="Given User Opens Facebook" owner="facebook_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:32:57.757166" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com/'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-27T20:32:57.757166" elapsed="14.584580"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-27T20:33:12.342767" elapsed="0.152272"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:12.904045" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Facebook_Login_Page.png"&gt;&lt;img src="Facebook_Login_Page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Facebook_Login_Page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-27T20:33:12.496039" elapsed="0.409008"/>
+</kw>
+<status status="PASS" start="2026-09-27T20:32:57.753573" elapsed="15.152466"/>
+</kw>
+<kw name="When User Enters Login Credentials" owner="facebook_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:12.910570" level="INFO">Typing text 'test@gmail.com' into text field 'xpath://input[@name="email"]'.</msg>
+<arg>xpath:${email_xpath}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-27T20:33:12.909572" elapsed="2.247568"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:15.159230" level="INFO">Typing password into text field 'xpath://input[@name="pass"]'.</msg>
+<msg time="2026-09-27T20:33:15.276075" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>xpath:${password_xpath}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-27T20:33:15.157140" elapsed="0.358950"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:15.992153" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Facebook_Credentials_Entered.png"&gt;&lt;img src="Facebook_Credentials_Entered.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Facebook_Credentials_Entered.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-27T20:33:15.517606" elapsed="0.475566"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${email_xpath}</arg>
+<arg>${password_xpath}</arg>
+<status status="PASS" start="2026-09-27T20:33:12.906039" elapsed="3.087133"/>
+</kw>
+<kw name="And User Clicks Login Button" owner="facebook_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:15.997181" level="INFO">Clicking element 'xpath://*[@id="login_form"]'.</msg>
+<arg>xpath:${login_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-27T20:33:15.996168" elapsed="0.312545"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:16.876126" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Facebook_Login_Clicked.png"&gt;&lt;img src="Facebook_Login_Clicked.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Facebook_Login_Clicked.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-27T20:33:16.309709" elapsed="0.567934"/>
+</kw>
+<arg>${login_xpath}</arg>
+<status status="PASS" start="2026-09-27T20:33:15.994167" elapsed="0.885495"/>
+</kw>
+<kw name="Then Verify Facebook Login Result" owner="facebook_keywords">
+<kw name="Wait Until Page Does Not Contain Element" owner="SeleniumLibrary">
+<arg>xpath:${fb_welcome_page_logo_xpath}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` disappears from the current page.</doc>
+<status status="PASS" start="2026-09-27T20:33:16.889778" elapsed="0.083304"/>
+</kw>
+<status status="PASS" start="2026-09-27T20:33:16.883220" elapsed="0.089862"/>
+</kw>
+<kw name="And Capture Login Screenshot" owner="facebook_keywords">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-27T20:33:17.417281" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Facebook_Login_Result.png"&gt;&lt;img src="Facebook_Login_Result.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Facebook_Login_Result.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-27T20:33:16.975062" elapsed="0.443254"/>
+</kw>
+<status status="PASS" start="2026-09-27T20:33:16.974056" elapsed="0.444260"/>
+</kw>
+<arg>username=test@gmail.com</arg>
+<arg>password=abcd@10</arg>
+<arg>email_xpath=//input[@name="email"]</arg>
+<arg>password_xpath=//input[@name="pass"]</arg>
+<arg>login_xpath=//*[@id="login_form"]</arg>
+<status status="PASS" start="2026-09-27T20:32:57.749004" elapsed="19.669312"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-09-27T20:33:17.419312" elapsed="3.082810"/>
+</kw>
+<doc>DESCRIPTION:
+Login to Facebook using credentials from CSV file.
+
+PRE-REQUISITE:
+1. Chrome browser should be installed.
+2. Login data should be available in login_data.csv.
+
+EXPECTED RESULTS:
+1. Facebook login page should be displayed.
+2. Login should be validated based on the result.</doc>
+<tag>Facebook_Login</tag>
+<tag>Login</tag>
+<tag>Regression</tag>
+<tag>UI</tag>
+<status status="PASS" start="2026-09-27T20:32:57.741476" elapsed="22.762674"/>
+</test>
+<doc>Facebook Login Automation</doc>
+<status status="PASS" start="2026-09-27T20:32:55.706924" elapsed="24.817405"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Facebook_Login</stat>
+<stat pass="1" fail="0" skip="0">Login</stat>
+<stat pass="1" fail="0" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">UI</stat>
+</tag>
+<suite>
+<stat name="Facebook Login" id="s1" pass="1" fail="0" skip="0">Facebook Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

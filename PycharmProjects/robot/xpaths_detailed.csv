@@ -1,0 +1,39 @@
+Tag Type,ID / Name / Class Identifier,Attributes / Actions,Absolute XPath,Relative XPath (Attributes)
+script,<script >,src='/js/vendor/298279967.js',/html[1]/html[1]/head[1]/script[1],//script
+meta,<meta >,charset='utf-8',/html[1]/html[1]/head[1]/meta[1],//meta
+meta,<meta name='viewport' >,"name='viewport', content='width=device-width'",/html[1]/html[1]/head[1]/meta[2],//meta[@name='viewport']
+title,<title > (Text: 'The Internet'),N/A,/html[1]/html[1]/head[1]/title[1],//title
+script,<script >,src='/js/vendor/jquery-1.11.3.min.js',/html[1]/html[1]/head[1]/link[1]/link[1]/script[1],//script
+script,<script >,src='/js/vendor/jquery-ui-1.11.4/jquery-ui.js',/html[1]/html[1]/head[1]/link[1]/link[1]/script[2],//script
+script,<script >,src='/js/foundation/foundation.js',/html[1]/html[1]/head[1]/link[1]/link[1]/script[3],//script
+script,<script >,src='/js/foundation/foundation.alerts.js',/html[1]/html[1]/head[1]/link[1]/link[1]/script[4],//script
+script,<script > (Text: '$(document).foundation();'),N/A,/html[1]/html[1]/head[1]/link[1]/link[1]/script[5],//script
+div,<div id='flash-messages' class='large-12 columns' >,"id='flash-messages', class='large-12 columns'",/html[1]/html[1]/head[1]/link[1]/body[1]/div[1]/div[1],//div[@id='flash-messages']
+script,"<script > (Text: 'function jsAlert() {
+    alert('I am a JS Alert');
+    log('You successfully clicked an alert');
+  }
+
+  function jsConfirm() {
+    var c = confirm('I am a JS Confirm');
+    var result = c === true ? 'Ok' : 'Cancel';
+    log('You clicked: ' + result);
+  }
+
+  function jsPrompt() {
+    var p = prompt('I am a JS prompt');
+    log('You entered: ' + p);
+  }
+
+  function log(msg) {
+    var result = document.getElementById('result');
+    result.innerHTML = msg;
+  }')",N/A,/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/script[1],//script
+h3,<h3 > (Text: 'JavaScript Alerts'),N/A,/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/h3[1],//h3
+p,<p > (Text: 'Here are some examples of different JavaScript alerts which can be troublesome for automation'),N/A,/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/p[1],//p
+button,<button > (Text: 'Click for JS Alert'),onclick='jsAlert()',/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/ul[1]/li[1]/button[1],//button[@onclick='jsAlert()']
+button,<button > (Text: 'Click for JS Confirm'),onclick='jsConfirm()',/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/ul[1]/li[2]/button[1],//button[@onclick='jsConfirm()']
+button,<button > (Text: 'Click for JS Prompt'),onclick='jsPrompt()',/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/ul[1]/li[3]/button[1],//button[@onclick='jsPrompt()']
+h4,<h4 > (Text: 'Result:'),N/A,/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/h4[1],//h4
+p,<p id='result' >,"id='result', style='color:green'",/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/a[1]/div[1]/div[1]/p[2],//p[@id='result']
+a,<a > (Text: 'Elemental Selenium'),"target='_blank', href='http://elementalselenium.com/'",/html[1]/html[1]/head[1]/link[1]/body[1]/div[2]/div[1]/div[1]/hr[1]/div[1]/a[1],//a

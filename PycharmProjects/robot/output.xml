@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.2 on win32)" generated="2026-09-18T09:52:05.415209" rpa="false" schemaversion="5">
+<suite id="s1" name="Alert" source="C:\Users\USER\PycharmProjects\robot\alert.robot">
+<test id="s1-t1" name="one" line="57">
+<kw name="google bowser launch" owner="browser">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-18T09:52:06.218864" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
+<arg>https://www.google.com/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-18T09:52:06.218864" elapsed="2.627411"/>
+</kw>
+<status status="PASS" start="2026-09-18T09:52:06.213289" elapsed="2.632986"/>
+</kw>
+<kw name="Capture Element Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-18T09:52:11.181486" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="one.png"&gt;&lt;img src="one.png" width="400px"&gt;&lt;/a&gt;</msg>
+<arg>//*[@id="gb"]/div[1]/div[1]/a</arg>
+<arg>one.png</arg>
+<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
+<status status="PASS" start="2026-09-18T09:52:08.858503" elapsed="2.326533"/>
+</kw>
+<kw name="facebook bowser launch" owner="browser">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-18T09:52:11.191578" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com/'.</msg>
+<arg>https://www.facebook.com/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-18T09:52:11.190578" elapsed="5.607872"/>
+</kw>
+<status status="PASS" start="2026-09-18T09:52:11.188584" elapsed="5.611395"/>
+</kw>
+<status status="PASS" start="2026-09-18T09:52:06.213289" elapsed="10.587361"/>
+</test>
+<status status="PASS" start="2026-09-18T09:52:05.415209" elapsed="11.388063"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Alert" id="s1" pass="1" fail="0" skip="0">Alert</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

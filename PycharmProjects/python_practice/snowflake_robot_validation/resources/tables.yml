@@ -1,0 +1,16 @@
+tables:
+  - name: TEST
+    columns:
+      - id
+      - first_name
+      - last_name
+      - email
+      - gender
+  - name: TEST1
+    columns:
+      - emp_id
+      - first_name
+      - last_name
+      - email
+      - gender
+

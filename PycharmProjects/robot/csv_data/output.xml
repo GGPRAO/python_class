@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.2 on win32)" generated="2026-09-26T20:49:08.968231" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\USER\PycharmProjects\robot\csv_data\login.robot">
+<test id="s1-t1" name="Facebook Login with ${username}" line="11">
+<kw name="Facebook Login Test">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-26T20:49:09.983145" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com/'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-26T20:49:09.983145" elapsed="6.169829"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-26T20:49:16.153993" elapsed="0.185309"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-26T20:49:16.345041" level="INFO">Typing text 'test@gmail.com' into text field 'xpath://input[@name="email"]'.</msg>
+<arg>xpath:${email_xpath}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-26T20:49:16.340496" elapsed="2.387172"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-26T20:49:23.729135" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-26T20:49:18.727668" elapsed="5.001467"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-26T20:49:23.729135" level="INFO">Typing password into text field 'xpath://input[@name="pass"]'.</msg>
+<msg time="2026-09-26T20:49:23.792961" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>xpath:${password_xpath}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-26T20:49:23.729135" elapsed="0.245658"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-26T20:49:28.982926" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-26T20:49:23.974793" elapsed="5.008133"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-26T20:49:28.984948" level="INFO">Clicking element 'xpath://*[@id="login_form"]'.</msg>
+<arg>xpath:${login_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-26T20:49:28.982926" elapsed="0.215873"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-09-26T20:49:34.200451" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-09-26T20:49:29.198799" elapsed="5.001652"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-09-26T20:49:34.537708" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-09-26T20:49:34.200451" elapsed="0.337257"/>
+</kw>
+<kw name="Wait Until I Close Browser" owner="custom_library">
+<msg time="2026-09-26T20:50:14.318998" level="INFO">Close the browser manually, then press ENTER here...</msg>
+<status status="PASS" start="2026-09-26T20:49:34.537708" elapsed="39.781290"/>
+</kw>
+<arg>username=test@gmail.com</arg>
+<arg>password=abcd@10</arg>
+<arg>email_xpath=//input[@name="email"]</arg>
+<arg>password_xpath=//input[@name="pass"]</arg>
+<arg>login_xpath=//*[@id="login_form"]</arg>
+<status status="PASS" start="2026-09-26T20:49:09.977761" elapsed="64.341237"/>
+</kw>
+<status status="PASS" start="2026-09-26T20:49:09.977761" elapsed="64.344270"/>
+</test>
+<status status="PASS" start="2026-09-26T20:49:08.968231" elapsed="65.355818"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="1" fail="0" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

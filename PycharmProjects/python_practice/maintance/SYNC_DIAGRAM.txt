@@ -1,0 +1,228 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                       PAYMENT & MAINTENANCE SYNC DIAGRAM                  ║
+║                                                                           ║
+║              How Payment Status and Maintenance Work Together            ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+
+SCENARIO 1: USER CHANGES PAYMENT TO PAID
+═════════════════════════════════════════════════════════════════════════════
+
+User Action:                          Backend Processing:
+┌──────────────────┐                  ┌─────────────────────────────────┐
+│ Click Payment    │                  │ set_payment() function:         │
+│ Dropdown         │ ─────────POST────→ 1. Set payment_status='paid'   │
+│ Select: ✅ PAID  │                  │ 2. Get current_month='2026-02' │
+└──────────────────┘                  │ 3. add_maintenance_month()     │
+                                      │ 4. Commit to database           │
+                                      └─────────────────────────────────┘
+                                                    ↓
+Result:                               Database Change:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ payment_status = 'paid'  │ ←──────── │ H-001: paid, available          │
+│ maint_paid_months =      │          │   payment_status: 'paid'        │
+│ '2026-02,2026-03'        │          │   maint_paid_months: '2026-02...'│
+└──────────────────────────┘          └──────────────────────────────────┘
+                                                    ↓
+UI Display:                           Flash Message:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Payment: ✅ PAID         │          │ ✓ House H-001 marked as PAID    │
+│ Maintenance 2026-02:     │          │   (Payment & Maintenance synced  │
+│ ✅ PAID (auto-synced!)   │          │   for 2026-02)                   │
+└──────────────────────────┘          └──────────────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+SCENARIO 2: USER CHANGES PAYMENT TO NOT PAID
+═════════════════════════════════════════════════════════════════════════════
+
+User Action:                          Backend Processing:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Click Payment Dropdown   │          │ set_payment() function:          │
+│ Select: ❌ NOT PAID      │ ────POST─→ 1. Set payment_status='not_paid'│
+└──────────────────────────┘          │ 2. Get current_month='2026-02'  │
+                                      │ 3. remove_maintenance_month()   │
+                                      │ 4. Commit to database            │
+                                      └──────────────────────────────────┘
+                                                    ↓
+Result:                               Database Change:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ payment_status =         │ ←──────── │ H-001: not_paid, available      │
+│ 'not_paid'               │          │   payment_status: 'not_paid'    │
+│ maint_paid_months =      │          │   maint_paid_months: '2026-03'  │
+│ '2026-03' (2026-02 gone) │          │ (2026-02 removed)                │
+└──────────────────────────┘          └──────────────────────────────────┘
+                                                    ↓
+UI Display:                           Flash Message:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Payment: ❌ NOT PAID     │          │ ✓ House H-001 marked as NOT     │
+│ Maintenance 2026-02:     │          │   PAID (Maintenance removed     │
+│ ❌ NOT PAID (sync'd!)    │          │   for 2026-02)                   │
+└──────────────────────────┘          └──────────────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+SCENARIO 3: USER ADDS MAINTENANCE FOR CURRENT MONTH
+═════════════════════════════════════════════════════════════════════════════
+
+User Action:                          Backend Processing:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Click Month Picker       │          │ set_maintenance() function:      │
+│ Select: 2026-02          │ ────POST─→ 1. Validate month format       │
+│ Click: + Add Month       │          │ 2. Is month == current_month?   │
+└──────────────────────────┘          │    YES → sync with payment!      │
+                                      │ 3. Set payment_status='paid'     │
+                                      │ 4. add_maintenance_month()       │
+                                      │ 5. Commit to database            │
+                                      └──────────────────────────────────┘
+                                                    ↓
+Result:                               Database Change:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ payment_status = 'paid'  │ ←──────── │ H-001: paid, available          │
+│ (auto-synced!)           │          │   payment_status: 'paid'        │
+│ maint_paid_months =      │          │   maint_paid_months: '2026-02..'│
+│ '2026-02,2026-03'        │          │ (2026-02 added, payment synced) │
+└──────────────────────────┘          └──────────────────────────────────┘
+                                                    ↓
+UI Display:                           Flash Message:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Payment: ✅ PAID         │          │ ✓ House H-001 maintenance       │
+│ (auto-synced!)           │          │   marked as paid for 2026-02    │
+│ Maintenance 2026-02:     │          │   (Payment synced to PAID)       │
+│ ✅ PAID                  │          └──────────────────────────────────┘
+└──────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+SCENARIO 4: USER ADDS MAINTENANCE FOR FUTURE MONTH
+═════════════════════════════════════════════════════════════════════════════
+
+User Action:                          Backend Processing:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Click Month Picker       │          │ set_maintenance() function:      │
+│ Select: 2026-03          │ ────POST─→ 1. Validate month format       │
+│ Click: + Add Month       │          │ 2. Is month == current_month?   │
+└──────────────────────────┘          │    NO → don't sync!              │
+                                      │ 3. Just add_maintenance_month()  │
+                                      │ 4. payment_status UNCHANGED      │
+                                      │ 5. Commit to database            │
+                                      └──────────────────────────────────┘
+                                                    ↓
+Result:                               Database Change:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ payment_status =         │ ←──────── │ H-001: not_paid, available      │
+│ 'not_paid' (no change!)  │          │   payment_status: 'not_paid'    │
+│ maint_paid_months =      │          │   maint_paid_months: '2026-03'  │
+│ '2026-03' (future added) │          │ (2026-03 added, NO payment sync) │
+└──────────────────────────┘          └──────────────────────────────────┘
+                                                    ↓
+UI Display:                           Flash Message:
+┌──────────────────────────┐          ┌──────────────────────────────────┐
+│ Payment: ❌ NOT PAID     │          │ ✓ House H-001 maintenance       │
+│ (unchanged)              │          │   marked as paid for 2026-03    │
+│ Maintenance 2026-03:     │          │ (No payment sync - future month) │
+│ ✅ PAID (independent)    │          └──────────────────────────────────┘
+└──────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+SYNC LOGIC DECISION TREE:
+═════════════════════════════════════════════════════════════════════════════
+
+User changes Payment?
+  ├─ YES → Sync maintenance_paid_months with current_month
+  │        (Add if 'paid', Remove if 'not_paid')
+  │        Trigger: set_payment()
+  │
+  └─ NO  → User changes Maintenance?
+           ├─ YES → Is month == current_month?
+           │        ├─ YES → Sync payment_status
+           │        │        Trigger: set_maintenance()
+           │        └─ NO  → Don't sync
+           │                 (Allow independent maintenance)
+           │
+           └─ NO  → No sync needed
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+DATABASE STATE EXAMPLES:
+═════════════════════════════════════════════════════════════════════════════
+
+Example 1: Fully Synced for Current Month
+──────────────────────────────────────────
+H-001:
+  payment_status: 'paid'
+  maintenance_paid_months: '2026-02'
+  (Current month 2026-02 is in maintenance list)
+  (Both show: ✅ PAID)
+
+Example 2: Multiple Maintenance Months
+───────────────────────────────────────
+H-002:
+  payment_status: 'paid'
+  maintenance_paid_months: '2026-01,2026-02,2026-03'
+  (Current month 2026-02 is in list → Synced)
+  (Also has past month 2026-01 and future month 2026-03)
+
+Example 3: Not Paid with Future Maintenance
+─────────────────────────────────────────────
+H-003:
+  payment_status: 'not_paid'
+  maintenance_paid_months: '2026-03,2026-04'
+  (Current month 2026-02 is NOT in list → Payment is NOT PAID)
+  (But has maintenance for future months - independent)
+
+Example 4: Just Added Maintenance
+──────────────────────────────────
+H-004:
+  payment_status: 'not_paid'
+  maintenance_paid_months: ''
+  (No months paid)
+  (Both show: ❌ NOT PAID)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+
+SYNC RULES SUMMARY:
+═════════════════════════════════════════════════════════════════════════════
+
+Rule 1: Current Month Only
+──────────────────────────
+  Only the current month (2026-02) is synced with payment_status.
+  Past and future months are independent.
+
+Rule 2: Bidirectional
+─────────────────────
+  Payment → Maintenance: When payment changes, maintenance changes
+  Maintenance → Payment: When current month maintenance changes, payment changes
+
+Rule 3: Consistent State
+────────────────────────
+  If payment_status = 'paid' → 2026-02 MUST be in maintenance_paid_months
+  If payment_status = 'not_paid' → 2026-02 MUST NOT be in maintenance_paid_months
+
+Rule 4: Independent Future
+──────────────────────────
+  You can add maintenance for any past/future month without affecting payment
+  Example: House can be "Not Paid" but have maintenance for 2026-03
+
+Rule 5: All-or-Nothing
+──────────────────────
+  Sync either fully completes or doesn't happen (database transaction)
+  No partial updates
+
+
+═════════════════════════════════════════════════════════════════════════════
+

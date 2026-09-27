@@ -1,0 +1,2 @@
+*** Test Cases ***,${username},${password},${email_xpath},${password_xpath},${login_xpath}
+Facebook Login with ${username},test@gmail.com,abcd@10,"//input[@name=""email""]","//input[@name=""pass""]","//*[@id=""login_form""]"

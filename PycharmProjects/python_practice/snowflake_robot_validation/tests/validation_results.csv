@@ -1,0 +1,5 @@
+TABLE_NAME,CHECK_TYPE,STATUS,DETAILS,QUERY
+TEST,COUNT,FAIL,"TEST COUNT MISMATCH: SRC=6, TGT=5",SELECT COUNT(*) FROM SRC.TEST vs SELECT COUNT(*) FROM TGT.TEST
+TEST,DATA_DIFF,FAIL,TEST DATA MISMATCH: 1 extra records in Source,"SELECT id, first_name, last_name, email, gender FROM SRC.TEST MINUS SELECT id, first_name, last_name, email, gender FROM TGT.TEST"
+TEST1,COUNT,PASS,Match: 5,SELECT COUNT(*) FROM SRC.TEST1
+TEST1,DATA_DIFF,PASS,Data matches,"SELECT emp_id, first_name, last_name, email, gender FROM SRC.TEST1 MINUS SELECT emp_id, first_name, last_name, email, gender FROM TGT.TEST1"

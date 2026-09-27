@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.2 on win32)" generated="2026-01-04T20:55:49.585126" rpa="false" schemaversion="5">
+<suite id="s1" name="Validation" source="C:\Users\USER\PycharmProjects\python_practice\snowflake_robot_validation\tests\validation.robot">
+<test id="s1-t1" name="Snowflake Data Validation" line="18">
+<kw name="Connect To Snowflake" owner="Snowflake">
+<msg time="2026-01-04T20:55:52.345961" level="INFO">Snowflake Connector for Python Version: 4.1.1, Python Version: 3.10.2, Platform: Windows-10-10.0.26200-SP0</msg>
+<msg time="2026-01-04T20:55:52.347995" level="INFO">Connecting to GLOBAL Snowflake domain</msg>
+<msg time="2026-01-04T20:55:57.019459" level="INFO">Connected to Snowflake successfully.</msg>
+<arg>${ACCOUNT}</arg>
+<arg>${USER}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ROLE}</arg>
+<arg>${WAREHOUSE}</arg>
+<arg>${DATABASE}</arg>
+<status status="PASS" start="2026-01-04T20:55:52.342814" elapsed="4.676645"/>
+</kw>
+<kw name="Run Validations" owner="Snowflake">
+<msg time="2026-01-04T20:55:57.022956" level="INFO">--- Processing Table: TEST ---</msg>
+<msg time="2026-01-04T20:55:57.416695" level="INFO">--- Processing Table: TEST1 ---</msg>
+<msg time="2026-01-04T20:55:57.788764" level="FAIL">Validation completed with failures:
+TEST COUNT MISMATCH: SRC=6, TGT=5
+TEST DATA MISMATCH: 1 extra records in Source</msg>
+<arg>${SRC_SCHEMA}</arg>
+<arg>${TGT_SCHEMA}</arg>
+<arg>${YAML_FILE}</arg>
+<arg>${CSV_FILE}</arg>
+<status status="FAIL" start="2026-01-04T20:55:57.022956" elapsed="0.767523">Validation completed with failures:
+TEST COUNT MISMATCH: SRC=6, TGT=5
+TEST DATA MISMATCH: 1 extra records in Source</status>
+</kw>
+<kw name="Close Connection" owner="Snowflake">
+<status status="NOT RUN" start="2026-01-04T20:55:57.793006" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-04T20:55:52.339008" elapsed="5.455789">Validation completed with failures:
+TEST COUNT MISMATCH: SRC=6, TGT=5
+TEST DATA MISMATCH: 1 extra records in Source</status>
+</test>
+<status status="FAIL" start="2026-01-04T20:55:49.590926" elapsed="8.206513"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Validation" id="s1" pass="0" fail="1" skip="0">Validation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

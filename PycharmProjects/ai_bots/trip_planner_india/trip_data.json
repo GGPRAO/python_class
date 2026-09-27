@@ -1,0 +1,159 @@
+{
+  "regions": {
+    "North India": {
+      "popular_destinations": ["Delhi", "Jaipur", "Agra", "Shimla", "Manali", "Rishikesh", "Udaipur"],
+      "best_months": ["October", "November", "December", "January", "February", "March"],
+      "attractions": ["Taj Mahal", "Red Fort", "Hawa Mahal", "City Palace", "Lake Palace"],
+      "avg_temp": "5-25°C"
+    },
+    "South India": {
+      "popular_destinations": ["Kerala", "Goa", "Bangalore", "Mysore", "Chennai", "Hyderabad", "Ooty"],
+      "best_months": ["October", "November", "December", "January", "February", "May"],
+      "attractions": ["Backwaters", "Beaches", "Spice Plantations", "Forts", "Temples"],
+      "avg_temp": "20-30°C"
+    },
+    "East India": {
+      "popular_destinations": ["Kolkata", "Darjeeling", "Sikkim", "Odisha", "Assam", "Meghalaya"],
+      "best_months": ["October", "November", "December", "February", "March", "April"],
+      "attractions": ["Tea Gardens", "Mountains", "Wildlife", "Temples", "Waterfalls"],
+      "avg_temp": "10-25°C"
+    },
+    "West India": {
+      "popular_destinations": ["Mumbai", "Goa", "Rajasthan", "Gujarat", "Pune", "Nashik"],
+      "best_months": ["October", "November", "December", "January", "February", "March"],
+      "attractions": ["Beaches", "Forts", "Deserts", "Lakes", "Wine Regions"],
+      "avg_temp": "15-35°C"
+    },
+    "Northeast India": {
+      "popular_destinations": ["Assam", "Meghalaya", "Manipur", "Nagaland", "Tripura", "Mizoram"],
+      "best_months": ["September", "October", "November", "December", "January", "February"],
+      "attractions": ["Living Root Bridges", "Kaziranga", "Living Roots", "Sacred Sites", "Tribal Culture"],
+      "avg_temp": "10-25°C"
+    }
+  },
+  "hotel_categories": {
+    "Budget Friendly": {
+      "price_range": "₹1,000-2,000",
+      "features": ["Basic rooms", "Shared bathrooms", "WiFi", "24-hour staff"],
+      "examples": ["Guest Houses", "Budget Hotels", "Hostels"]
+    },
+    "Affordable": {
+      "price_range": "₹2,000-5,000",
+      "features": ["Private rooms", "Attached bathrooms", "Restaurant", "Room Service", "AC"],
+      "examples": ["3-Star Hotels", "Business Hotels"]
+    },
+    "Mid-Range": {
+      "price_range": "₹5,000-10,000",
+      "features": ["Comfortable rooms", "Multiple restaurants", "Gym", "Spa", "Good service"],
+      "examples": ["4-Star Hotels", "Resort-style Hotels"]
+    },
+    "Premium": {
+      "price_range": "₹10,000-20,000",
+      "features": ["Spacious rooms", "Fine dining", "Concierge", "Business center", "Premium amenities"],
+      "examples": ["5-Star Hotels", "Heritage Hotels"]
+    },
+    "Luxury": {
+      "price_range": "₹20,000+",
+      "features": ["Suite rooms", "Personal butler", "Michelin-star dining", "Spa", "Private pools", "Exclusive access"],
+      "examples": ["Ultra-luxury hotels", "Palace hotels", "Resorts"]
+    }
+  },
+  "transportation_costs": {
+    "Flight": {
+      "short_haul": "₹3,000-8,000",
+      "medium_haul": "₹5,000-12,000",
+      "long_haul": "₹8,000-20,000",
+      "notes": "Budget airlines cheaper, full-service airlines offer better comfort"
+    },
+    "Train": {
+      "sleeper": "₹500-2,000",
+      "ac_3_tier": "₹1,000-3,000",
+      "ac_2_tier": "₹1,500-4,000",
+      "first_class": "₹3,000-8,000",
+      "notes": "Early booking saves 20-30%, off-season is cheaper"
+    },
+    "Bus": {
+      "ordinary": "₹300-1,000",
+      "ac_semi_sleeper": "₹500-2,000",
+      "ac_sleeper": "₹800-3,000",
+      "luxury": "₹1,000-4,000",
+      "notes": "Sleeper buses for long journeys, day coaches for short distances"
+    },
+    "Car_Rental": {
+      "sedan": "₹2,000-4,000/day",
+      "suv": "₹3,000-6,000/day",
+      "van": "₹4,000-8,000/day",
+      "notes": "Add fuel, toll, parking. Self-drive or with driver"
+    }
+  },
+  "seasonal_guide": {
+    "Winter": {
+      "months": ["October", "November", "December", "January", "February", "March"],
+      "temperature": "5-25°C",
+      "weather": "Dry and pleasant",
+      "best_for": ["Sightseeing", "Road trips", "Trekking", "Beach holidays"],
+      "regions": ["North India", "South India", "West India"],
+      "packing": ["Sweaters", "Jackets", "Comfortable shoes", "Sunscreen"]
+    },
+    "Summer": {
+      "months": ["April", "May", "June"],
+      "temperature": "25-45°C",
+      "weather": "Hot and dry",
+      "best_for": ["Hill stations", "Adventure sports", "Museums"],
+      "regions": ["Himalayas", "Northeast India", "High altitude areas"],
+      "packing": ["Light clothing", "Hat", "Sunglasses", "Sunscreen", "Water bottle"]
+    },
+    "Monsoon": {
+      "months": ["July", "August", "September"],
+      "temperature": "20-30°C",
+      "weather": "Wet and humid",
+      "best_for": ["Waterfalls", "Beaches", "Adventure activities"],
+      "regions": ["Western Ghats", "Coastal areas", "Northeast India"],
+      "packing": ["Rain gear", "Waterproof shoes", "Umbrella", "Quick-dry clothes"]
+    },
+    "Spring": {
+      "months": ["February", "March"],
+      "temperature": "15-30°C",
+      "weather": "Mild and pleasant",
+      "best_for": ["All activities", "Flower viewing", "Festivals"],
+      "regions": ["All India"],
+      "packing": ["Light layers", "Comfortable shoes", "Camera"]
+    }
+  },
+  "popular_routes": {
+    "road_trips": [
+      {"name": "Delhi-Jaipur-Agra Triangle", "distance": "240km", "duration": "3 days", "attractions": ["Taj Mahal", "Red Fort", "Hawa Mahal"]},
+      {"name": "Mumbai-Goa Coastal Route", "distance": "600km", "duration": "2-3 days", "attractions": ["Beaches", "Portuguese forts", "Waterfalls"]},
+      {"name": "Bangalore-Ooty Hill Route", "distance": "250km", "duration": "1-2 days", "attractions": ["Tea gardens", "Mountain scenery", "Lakes"]},
+      {"name": "Kerala Backwater Route", "distance": "150km", "duration": "3-4 days", "attractions": ["Backwaters", "Beaches", "Spice gardens"]},
+      {"name": "Shimla-Manali Road Trip", "distance": "250km", "duration": "2-3 days", "attractions": ["Mountain views", "Adventure activities", "Pine forests"]}
+    ],
+    "train_routes": [
+      {"name": "Delhi-Agra Express", "duration": "3 hours", "price_range": "₹500-2000", "class": "All classes available"},
+      {"name": "Rajdhani Express (Delhi-Mumbai)", "duration": "16 hours", "price_range": "₹3000-8000", "class": "AC only"},
+      {"name": "Kerala Express (Delhi-Cochin)", "duration": "40 hours", "price_range": "₹2000-5000", "class": "All classes"},
+      {"name": "Goa Express (Mumbai-Goa)", "duration": "10 hours", "price_range": "₹1000-3000", "class": "All classes"},
+      {"name": "Darjeeling Mail", "duration": "20 hours", "price_range": "₹1500-4000", "class": "All classes"}
+    ]
+  },
+  "family_friendly_activities": {
+    "North India": ["Taj Mahal visit", "City Palace exploration", "Hawa Mahal photo session", "River Yamuna cruise", "Chandni Chowk shopping"],
+    "South India": ["Backwater houseboat cruise", "Beach activities", "Temple tours", "Wildlife sanctuary", "Spice plantation visit"],
+    "East India": ["Tea garden tours", "Darjeeling toy train", "Sikkim sightseeing", "Wildlife spotting", "Waterfall visits"],
+    "West India": ["Beach time", "Fort exploration", "Camel safari", "Desert activities", "Heritage walks"],
+    "Northeast India": ["Tribal village tours", "Wildlife safari", "Mountain trekking", "Water sports", "Cultural experiences"]
+  },
+  "budget_travel_tips": [
+    "Travel during off-season (April-September) for 30-40% discounts",
+    "Book trains 2 months in advance for better prices",
+    "Stay in local guesthouses instead of hotels",
+    "Eat at local restaurants and street food stalls",
+    "Use public transport like buses and local trains",
+    "Visit free attractions like parks, temples, and beaches",
+    "Book accommodation in advance online for discounts",
+    "Travel with groups for shared accommodation costs",
+    "Buy travel insurance for peace of mind",
+    "Book flights at least 3-4 weeks in advance"
+  ]
+}
+
